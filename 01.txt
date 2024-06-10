@@ -1,0 +1,11 @@
+insert into users (idx, id, name, age) values('mother match mass mom');
+insert into users (idx, id, name, age) values('aa010-1234-5678dfkdkfd010-123a-4567dafkd');
+insert into users (idx, id, name, age) values('mother match mass mom');
+insert into users (idx, id, name, age) values('aa010-1234-5678dfkdkfd010-123a-4567dafkd');
+insert into users (idx, id, name, age) values('');
+insert into users (idx, id, name, age) values('insert into users (idx, id, name, age) values ('1', 'test', '테스트', '10');
+insert into users (idx, id, name, age) values('');
+insert into users (idx, id, name, age) values('1','test','테스트','10');
+insert into users (idx, id, name, age) values('2','abcd','알파벳','22');
+insert into users (idx, id, name, age) values('3','admin','관리자','13');
+insert into users (idx, id, name, age) values('');
