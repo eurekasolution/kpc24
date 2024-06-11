@@ -2,6 +2,9 @@
 아래 사이트에 접속해 보이는지 확인 필수
 https://github.com/eurekasolution/kpc24
 
+w3schools.com/bootstrap5
+
+
 A1300 : 첫날 13:00시를 의미
 B0900 : 두째날 09:00를 의미 (커밋한 시간)
 
@@ -79,3 +82,7 @@ insert into first (id, name, birth)
 
 
 
+index.php?cmd=a
+
+include "$a.php";
+a.php ~ z.php
