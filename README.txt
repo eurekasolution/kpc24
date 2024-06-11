@@ -86,3 +86,5 @@ index.php?cmd=a
 
 include "$a.php";
 a.php ~ z.php
+
+javascript:alert(document.cookie);

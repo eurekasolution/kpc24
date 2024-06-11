@@ -50,7 +50,7 @@
     </div>
   </div>
 </nav>
-
+본인이름
 	<form method="post" action="index.php?cmd=login">
 	<div class="row">
 		<div class="col"></div>
@@ -91,6 +91,7 @@
 
 		include "$cmd.php";	
 
+		//phpinfo();
 	?>
 
 </div> <!-- container -->
