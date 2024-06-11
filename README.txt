@@ -74,5 +74,8 @@ alter table first CONVERT TO
 insert into first (id, name, birth) 
     values ('aaaa', '알파벳', '2020-01-01');
 
+insert into first (id, name, birth) 
+    values('bbbb', '비비비비', '2000-01-01');
+
 
 

@@ -153,6 +153,22 @@
 		include "db.inc.php";
 		$conn = connect();
 
+		$sql = "select * from first";
+		$result = mysqli_query($conn, $sql);
+		$data = mysqli_fetch_array($result);
+
+		while($data)
+		{
+			/*
+				array[0] : index
+				연관배열 : associative array : 첨자가 텍스트
+				정확한 표기 : $data["name"]
+				dict["apple"] => 사과
+			*/
+			echo "$data[name] $data[id] <br>";
+			$data = mysqli_fetch_array($result);
+		}
+
 		closeDB($conn);
 	?>
 
