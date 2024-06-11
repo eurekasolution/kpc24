@@ -111,3 +111,26 @@ insert into users (id, pass, name, level, regtime)
     values('test', password('abcd'), '테스터', '1', now() );
 insert into users (id, pass, name, level, regtime) 
     values('user', password('bcde'), '유저', '1', now() );
+
+주석
+// single line comment
+/*
+    multi line comment
+*/
+
+<!-- web comment -->
+# config
+; config
+-- db sql 의 주석
+
+create table users2 (
+    idx int(10) auto_increment,
+    id  char(20) unique,
+    pass char(50),
+    name char(20) ,
+    level int(3) default '1',
+    -- 1 : 일반 사용자
+    -- 9 : 관리자
+    regtime datetime,
+    primary key(idx)
+);

@@ -4,10 +4,17 @@
 
     echo "id = $id , pass = $pass <br>";
 
+    //$id = str_replace("--", "", $id);
+    //$id = str_replace(" ", "", $id);
+    //$id = str_replace("'", "", $id);
+
     // 데이터베이스와 비교
-    $sql = "select * from users where id='$id' 
-                     and pass=password('$pass') ";
+    $sql = "select * from users where id='$id' and pass=password('$pass') ";
+    //                                  id : xxx' or 2>1 --    
+
+    
     $result = mysqli_query($conn, $sql);
+    echo "sql= $sql<br>";
     $data = mysqli_fetch_array($result);
 
     if($data)

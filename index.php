@@ -51,7 +51,30 @@
   </div>
 </nav>
 본인이름
-	<form method="post" action="index.php?cmd=login">
+	<script>
+		function checkError()
+		{
+			//var id = document.getElementById('id');
+			//var id = document.querySelector('#id');
+			let id = document.querySelector('#id');
+			console.log('id = ' + id);
+			console.log("id = " + id.value);
+			if(id.value.length < 4)
+			{
+				alert('4글자 이상 입력하세요');
+				id.focus();
+				return false;
+
+			}else
+			{
+
+			}
+			
+		}
+	</script>
+
+
+	<form method="post" onSubmit="return checkError()" action="index.php?cmd=login">
 	<div class="row">
 		<div class="col"></div>
 		<?php
@@ -71,11 +94,11 @@
 				
 				<div class="col-1 text-end">ID</div>
 				<div class="col-2">
-					<input type="text" name="id" class="form-control" placeholder="ID">
+					<input type="text" name="id" id="id" class="form-control"  required placeholder="ID">
 				</div>
 				<div class="col-1 text-end">PW</div>
 				<div class="col-2">
-					<input type="password" name="pass" class="form-control" placeholder="Password">
+					<input type="password" name="pass" id="pass" class="form-control" required placeholder="Password">
 				</div>
 				<div class="col-1">
 					<button type="submit" class="btn btn-primary form-control">GO</button>
