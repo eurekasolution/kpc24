@@ -66,8 +66,7 @@ create table first (
 alter database kpc COLLATE='utf8mb4_general_ci';
 drop table first;
 
-
-
+참고용
 alter table first CONVERT TO 
     character set utf8mb4 collate utf8mb4_general_ci;
 

@@ -1,0 +1,28 @@
+/* comment 
+    html : <!-- html comment -->
+
+    body { }  : tag
+    .body { } : class
+    #body { } : id
+
+*/
+/* 말줄임 */
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width:0;
+}
+
+a:link { text-decoration:none; color:#333333; }
+a:hover { text-decoration:none; color:#6c6b6b; }
+a:visited { text-decoration:none; color:#333333; }
+
+
+.colLine {
+    line-height:180%;
+    min-height:30px;
+    border-bottom:1px solid #CCCCCC;
+    padding-top:4px;
+    padding-bottom:4px;
+}
