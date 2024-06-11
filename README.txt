@@ -88,3 +88,26 @@ include "$a.php";
 a.php ~ z.php
 
 javascript:alert(document.cookie);
+
+Web Proxy 다운로드 
+
+download  Burp Suite
+
+create table users (
+    idx int(10) auto_increment,
+    id  char(20) unique,
+    pass char(50),
+    name char(20) ,
+    level int(3) default '1',
+    regtime datetime,
+    primary key(idx)
+);
+
+alter table users add level int(3) default '1' after name;
+
+insert into users (id, pass, name, level, regtime) 
+    values('admin', password('abcd'), '관리자', '9', now() );
+insert into users (id, pass, name, level, regtime) 
+    values('test', password('abcd'), '테스터', '1', now() );
+insert into users (id, pass, name, level, regtime) 
+    values('user', password('bcde'), '유저', '1', now() );

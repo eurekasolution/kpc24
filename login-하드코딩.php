@@ -4,24 +4,6 @@
 
     echo "id = $id , pass = $pass <br>";
 
-    // 데이터베이스와 비교
-    $sql = "select * from users where id='$id' 
-                     and pass=password('$pass') ";
-    $result = mysqli_query($conn, $sql);
-    $data = mysqli_fetch_array($result);
-
-    if($data)
-    {
-        $_SESSION["sess_id"] = $id;
-        $_SESSION["sess_name"] = $data["name"];
-        $_SESSION["sess_level"] = $data["level"];
-        $msg = $data["name"] ."님 반갑습니다.";
-    }else
-    {
-        $msg = "아이디나 비번을 확인하세요.";
-    }
-
-    /*
     if($id == "admin" and $pass== "1111")
     {
         $_SESSION["sess_id"] = $id;
@@ -38,7 +20,6 @@
     {
         $msg = "아이디나 비번을 확인하세요.";
     }
-    */
 
     echo "
     <script>

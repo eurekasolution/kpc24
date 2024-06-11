@@ -59,7 +59,12 @@
 			// $_SERVER["test"] , $_SESESSION[""]
 			if(isset($_SESSION["sess_id"]) and $_SESSION["sess_id"])
 			{
-				echo "홍길동님";
+				?>
+				<div class="col text-end">
+					<?php echo $_SESSION["sess_name"]; ?> 
+					<button type="button" class="btn btn-primary" onClick="location.href='index.php?cmd=logout' ">Exit</button>
+				</div>
+				<?php
 			}else
 			{
 				?>
