@@ -1,4 +1,6 @@
 <?php
+	session_save_path("./sess");
+	session_start();
 	include "db.inc.php";
 
 	$conn = connect();
@@ -48,6 +50,38 @@
     </div>
   </div>
 </nav>
+
+	<form method="post" action="index.php?cmd=login">
+	<div class="row">
+		<div class="col"></div>
+		<?php
+			// $_GET["id"] , $_POST["id"]
+			// $_SERVER["test"] , $_SESESSION[""]
+			if(isset($_SESSION["sess_id"]) and $_SESSION["sess_id"])
+			{
+				echo "홍길동님";
+			}else
+			{
+				?>
+				
+				<div class="col-1 text-end">ID</div>
+				<div class="col-2">
+					<input type="text" name="id" class="form-control" placeholder="ID">
+				</div>
+				<div class="col-1 text-end">PW</div>
+				<div class="col-2">
+					<input type="password" name="pass" class="form-control" placeholder="Password">
+				</div>
+				<div class="col-1">
+					<button type="submit" class="btn btn-primary form-control">GO</button>
+				</div>
+				</form>
+
+				<?php
+			}
+
+		?>
+	</div>
 
 	<?php
 		if(isset($_GET["cmd"]))
