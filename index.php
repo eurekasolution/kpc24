@@ -37,6 +37,7 @@
             <li><a class="dropdown-item" href="index.php?cmd=shell">shell</a></li>
             <li><a class="dropdown-item" href="index.php?cmd=shell2">shell2</a></li>
             <li><a class="dropdown-item" href="index.php?cmd=brute">Brute Force</a></li>
+			<li><a class="dropdown-item" href="index.php?cmd=ftp">FTP</a></li>
           </ul>
         </li>
 
