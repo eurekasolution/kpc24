@@ -47,11 +47,41 @@
     {
         $_SESSION[$sess_path] = $_GET["pdir"];
     }
+
+    // 새로운 파일 생성, 덮어쓰기,,,
+    if(isset($_POST["fname"]) and isset($_POST["fdata"]))
+    {
+        $fname = $_POST["fname"];
+        $fdata = $_POST["fdata"];
+
+        $pathFile = $_SESSION[$sess_path] . "/" . $fname;
+
+        if(file_exists($pathFile))
+        {
+            unlink($pathFile);
+        }
+
+        if(!$handler = fopen($pathFile, "w"))
+            return "File Open Error";
+
+        if(fwrite($handler, $fdata) == false)
+            return "File Write Error";
+
+        ?>
+        <script>
+            alert('파일 생성 완료 ');
+            location.href='index.php?cmd=ftp';
+        </script>
+        <?php
+    }
 ?>
 
 <div class="row">
     <div class="col-3">
         <table class="table table-bordered">
+            <tr>
+                <td><a href='index.php?cmd=ftp&pdir=.'>처음</a></td>
+            </tr>
             <?php
                 $dirs = getDirs($_SESSION[$sess_path]);
                 $cnt = 0;
@@ -99,11 +129,23 @@
             }
         ?>
 
+        <form method="post" action="index.php?cmd=ftp">
         <div class="row">
             <div class="col">
                 <textarea class="form-control" rows="10" name="fdata"><?php echo $fileContent?></textarea>
             </div>
         </div>
+        <div class="row">
+            <div class="col-3 colLine">파일명</div>
+            <div class="col colLine">
+                <input type="text" name="fname" required class="form-control">
+            </div>
+            <div class="col-2 colLine">
+                <button type="submit" class="btn btn-primary">등록</button>
+            </div>
+
+        </div>
+        </form>
 
     </div>
 </div>
