@@ -36,7 +36,7 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="index.php?cmd=shell">shell</a></li>
             <li><a class="dropdown-item" href="index.php?cmd=shell2">shell2</a></li>
-            <li><a class="dropdown-item" href="#">A third link</a></li>
+            <li><a class="dropdown-item" href="index.php?cmd=brute">Brute Force</a></li>
           </ul>
         </li>
 
