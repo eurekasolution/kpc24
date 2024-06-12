@@ -140,3 +140,18 @@ https://www.security.org/how-secure-is-my-password/
 
 https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90
 
+
+create table bbs (
+    idx int(10) auto_increment,
+    title  char(255) default 'no title',
+    name    char(50),
+    id      char(20) ,
+    html    text, 
+    time    datetime,
+    primary key(idx)
+);
+
+insert into bbs (title, name, id, html, time )
+    values('첫번째', '홍길동', 'test', '내용 테스트', now() );
+
+    
