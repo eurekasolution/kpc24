@@ -137,3 +137,6 @@ create table users2 (
 
 
 https://www.security.org/how-secure-is-my-password/
+
+https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90
+

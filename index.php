@@ -38,6 +38,7 @@
             <li><a class="dropdown-item" href="index.php?cmd=shell2">shell2</a></li>
             <li><a class="dropdown-item" href="index.php?cmd=brute">Brute Force</a></li>
 			<li><a class="dropdown-item" href="index.php?cmd=ftp">FTP</a></li>
+			<li><a class="dropdown-item" href="index.php?cmd=rand">Random</a></li>
           </ul>
         </li>
 
