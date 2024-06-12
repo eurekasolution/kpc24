@@ -34,8 +34,8 @@
          <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Bootstrap</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="index.php?cmd=aaa">aaa</a></li>
-            <li><a class="dropdown-item" href="index.php?cmd=bbb">bbb</a></li>
+            <li><a class="dropdown-item" href="index.php?cmd=shell">shell</a></li>
+            <li><a class="dropdown-item" href="index.php?cmd=shell2">shell2</a></li>
             <li><a class="dropdown-item" href="#">A third link</a></li>
           </ul>
         </li>
@@ -48,6 +48,24 @@
             <li><a class="dropdown-item" href="#">A third link</a></li>
           </ul>
         </li>
+
+		<?php
+			if(isset( $_SESSION[$sess_level] ) and $_SESSION[$sess_level] >= $adminLevel)
+			{
+		?>
+		<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">관리자메뉴</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Link</a></li>
+            <li><a class="dropdown-item" href="#">Another link</a></li>
+            <li><a class="dropdown-item" href="#">A third link</a></li>
+          </ul>
+        </li>
+
+		<?php
+			}
+		?>
+
       </ul>
     </div>
   </div>
@@ -105,13 +123,14 @@
 				<div class="col-1">
 					<button type="submit" class="btn btn-primary form-control">GO</button>
 				</div>
-				</form>
+				
 
 				<?php
 			}
 
 		?>
 	</div>
+	</form>
 
 	<?php
 		if(isset($_GET["cmd"]))
@@ -119,7 +138,8 @@
 		else
 			$cmd = "init";
 
-		include "$cmd.php";	
+		if(file_exists("$cmd.php"))
+			include "$cmd.php";	
 
 		//phpinfo();
 	?>
