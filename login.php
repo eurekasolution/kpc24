@@ -19,9 +19,9 @@
 
     if($data)
     {
-        $_SESSION["sess_id"] = $id;
-        $_SESSION["sess_name"] = $data["name"];
-        $_SESSION["sess_level"] = $data["level"];
+        $_SESSION[$sess_id] = $id;
+        $_SESSION[$sess_name] = $data["name"];
+        $_SESSION[$sess_level] = $data["level"];
         $msg = $data["name"] ."님 반갑습니다.";
     }else
     {

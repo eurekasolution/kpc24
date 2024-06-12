@@ -1,6 +1,8 @@
 <?php
 	session_save_path("./sess");
 	session_start();
+
+	include "config.inc.php";
 	include "db.inc.php";
 
 	$conn = connect();
@@ -8,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <title>Bootstrap 5 Example</title>
+  <title><?php echo $windowTitle ?></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
@@ -80,11 +82,11 @@
 		<?php
 			// $_GET["id"] , $_POST["id"]
 			// $_SERVER["test"] , $_SESESSION[""]
-			if(isset($_SESSION["sess_id"]) and $_SESSION["sess_id"])
+			if(isset($_SESSION[$sess_id]) and $_SESSION[$sess_id])
 			{
 				?>
 				<div class="col text-end">
-					<?php echo $_SESSION["sess_name"]; ?> 
+					<?php echo $_SESSION[$sess_name]; ?> 
 					<button type="button" class="btn btn-primary" onClick="location.href='index.php?cmd=logout' ">Exit</button>
 				</div>
 				<?php
