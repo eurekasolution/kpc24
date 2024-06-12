@@ -1,5 +1,6 @@
 <?php
     $letters = "abcdefghijklmnopqrstuvwxyz0123456789";
+    $letters = "abcdefghij";
     $size = strlen($letters);
 
     echo "size = $size<br>";
@@ -29,6 +30,8 @@
                             echo "id: $data[id] , pw = $pw<br>";
                             $data = mysqli_fetch_array($result);
                         }
+
+                        //exit();
                     }
                 }
                 
