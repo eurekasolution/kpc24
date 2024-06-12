@@ -134,3 +134,6 @@ create table users2 (
     regtime datetime,
     primary key(idx)
 );
+
+
+https://www.security.org/how-secure-is-my-password/
