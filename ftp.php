@@ -27,11 +27,25 @@
         return $files;
     }
 
+    function readFileSecure($path)
+    {
+        if(!$handler = fopen($path, "r"))
+            return "File Open Error";
+
+        $fileContent = file_get_contents($path, true);
+        return $fileContent;
+    }
+
     $sess_path = "sess_path";
 
     if(!isset($_SESSION[$sess_path]) or $_SESSION[$sess_path] == "")
     {
         $_SESSION[$sess_path] = "./";
+    }
+
+    if(isset($_GET["pdir"]))
+    {
+        $_SESSION[$sess_path] = $_GET["pdir"];
     }
 ?>
 
@@ -44,9 +58,10 @@
 
                 while(isset($dirs[$cnt]))
                 {
+                    $nextDir = $_SESSION[$sess_path] . "/" . $dirs[$cnt];
                     echo "
                     <tr>
-                        <td>$dirs[$cnt]</td>
+                        <td><a href='index.php?cmd=ftp&pdir=$nextDir'>$dirs[$cnt]</a></td>
                     </tr>
                     ";
                     $cnt ++;
@@ -65,7 +80,7 @@
                 {
                     echo "
                     <tr>
-                        <td>$files[$cnt]</td>
+                        <td><a href='index.php?cmd=ftp&pfile=$files[$cnt]'>$files[$cnt]</a></td>
                     </tr>
                     ";
                     $cnt ++;
@@ -73,5 +88,22 @@
                 
             ?>
         </table>
+
+        <?php
+            if(isset($_GET["pfile"]))
+            {
+                $fileContent = readFileSecure($_SESSION[$sess_path] . "/" . $_GET["pfile"]);
+            }else
+            {
+                $fileContent = "";
+            }
+        ?>
+
+        <div class="row">
+            <div class="col">
+                <textarea class="form-control" rows="10" name="fdata"><?php echo $fileContent?></textarea>
+            </div>
+        </div>
+
     </div>
 </div>
