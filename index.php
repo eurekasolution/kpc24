@@ -5,7 +5,18 @@
 	include "config.inc.php";
 	include "db.inc.php";
 
+	date_default_timezone_set("Asia/Seoul");
+
 	$conn = connect();
+
+	// log
+	$work = $_SEVER["QUERY_STRING"];
+	$ip = $_SERVER["REMOTE_ADDR"];
+	$userid = $_SESSION[$sess_id];
+
+	$sql = "insert into log (work, id, ip, time) 
+				values ('$work', '$userid', '$ip', now())";
+	mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="ko">
