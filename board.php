@@ -7,6 +7,17 @@
     if($mode == "list")
     {
         // 순서(X), 제목(0), 작성자(0), 작성일(x)
+
+        $Y = Date('Y');
+        $y = Date('y');
+        $m = Date('m');
+        $d = Date('d');
+
+        $today = Date('Y') . "-" . Date('m') . "-" . Date('d');
+
+        echo "Y = $Y , y = $y , m = $m, d = $d, today = $today<br>";
+
+
         ?>
         <div class="row">
             <div class="col d-none col-md-1 d-md-block colLine">순서</div>
@@ -21,12 +32,23 @@
         $data = mysqli_fetch_array($result);
         while($data)
         {
+            $time = $data["time"];
+            $split = explode(" ", $time);
+
+            if($split[0] == $today)
+            {   // 2024-06-13 12:34:56
+                $printTime = substr($split[1], 0, 5);
+            }else
+            {
+                $printTime = $split[0];
+            }
+
             ?>
             <div class="row">
                 <div class="col d-none col-md-1 d-md-block colLine"><?php echo $data["idx"] ?></div>
-                <div class="col-8 col-md-6 colLine"><?php echo $data["title"] ?></div>
+                <div class="col-8 col-md-6 colLine ellipsis"><a href="index.php?cmd=board&mode=show&idx=<?php echo $data["idx"] ?>"><?php echo $data["title"] ?></a></div>
                 <div class="col-4 col-md-2 colLine"><?php echo $data["name"] ?></div>
-                <div class="col d-none d-md-block col-md-3 colLine"><?php echo $data["time"] ?></div>
+                <div class="col d-none d-md-block col-md-3 colLine"><?php echo $printTime ?></div>
             </div>
             <?php         
             $data = mysqli_fetch_array($result);
@@ -48,11 +70,25 @@
         $name = $_POST["name"];
         $html = $_POST["html"];
 
+        // 공격은 왜 당하는가?
+        // <script> <a> <   ScRiPT >
+        // <  : &lt;   > : &gt;
+        // 동해물과 &nbsp; &nbsp;     백두산이
+
+        $title = str_replace("<", "&lt;", $title);
+        $title = str_replace(">", "&gt;", $title);
+
+        $html = str_replace("<", "&lt;", $html);
+        $html = str_replace(">", "&gt;", $html);
+
+        $title = addslashes($title);
+        $html = addslashes($html);
+
         $sql = "insert into bbs (title, name, html, time)
                      values('$title', '$name', '$html', now())";
         $result = mysqli_query($conn, $sql);
         if($result)
-            $msg = "등록 되었습니다.";
+            $msg = "등록 되었습니다. : ";
         else
             $msg = "등록 에러!!!";
         
@@ -102,5 +138,9 @@
         </form>
 
         <?php
+    }else if($mode == "show")
+    {
+        $idx = $_GET["idx"];
+        echo "idx = $idx<br>";
     }
 ?>
