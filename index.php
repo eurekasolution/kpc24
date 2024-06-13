@@ -10,9 +10,19 @@
 	$conn = connect();
 
 	// log
-	$work = $_SEVER["QUERY_STRING"];
-	$ip = $_SERVER["REMOTE_ADDR"];
-	$userid = $_SESSION[$sess_id];
+	$work = $_SERVER["QUERY_STRING"];
+	//$ip = $_SERVER["REMOTE_ADDR"];
+
+	$ip1 = rand(1, 254);
+	$ip2 = rand(1, 254);
+	$ip3 = rand(1, 254);
+	$ip4 = rand(1, 254);
+	$ip = "$ip1.$ip2.$ip3.$ip4"; // 랜덤한 IP
+
+	if(isset($_SESSION[$sess_id]))
+		$userid = $_SESSION[$sess_id];
+	else
+		$userid = "";
 
 	$sql = "insert into log (work, id, ip, time) 
 				values ('$work', '$userid', '$ip', now())";
@@ -58,8 +68,8 @@
 		<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Secure</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Link</a></li>
-            <li><a class="dropdown-item" href="#">Another link</a></li>
+		  	<li><a class="dropdown-item" href="index.php?cmd=log">Log</a></li>
+			<li><a class="dropdown-item" href="index.php?cmd=chart">LogChart</a></li>
             <li><a class="dropdown-item" href="#">A third link</a></li>
           </ul>
         </li>
