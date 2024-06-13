@@ -146,5 +146,102 @@
         $sql = "select * from bbs where idx='$idx' ";
         $result = mysqli_query($conn, $sql);
         $data = mysqli_fetch_array($result);
+
+        if($data)
+        {
+            // <b>제목</b>
+            // 작성자 : 홍길동 | 작성일 : 언제 | 읽음 : 3
+            // 내용
+            // 첨부 : 다운로드
+            // 이전, 다음글
+            // 목록, 수정, 삭제, 댓글
+            ?>
+
+            <div class="row">
+                <div class="col colLine">
+                    <b><?php echo $data["title"]?></b>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col colLine text-end">
+                    작성자 : <b><?php echo $data["title"]?></b> | 
+                    작성일 : <b><?php echo $data["time"]?></b>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col colLine" style="height:300px; min-height:300px;">
+                    <?php 
+                    // enter -> br : nl2br => new line to br tag
+                    // chatGPT : jsp로 php의 nl2br() 역할하는 함수를 하나 만들어줘.
+                    $data["html"] = nl2br($data["html"]);
+
+                    echo $data["html"]
+                    
+                    ?>
+                </div>
+            </div>
+            
+            <?php
+                $prev = "";
+                $next = "";
+                $prevTitle = "";
+                $nextTitle = "";
+
+                $pnsql = "select * from bbs order by idx desc";
+                $pnresult = mysqli_query($conn, $pnsql);
+                $pn = mysqli_fetch_array($pnresult);
+
+                $find = false;
+                while($pn)
+                {
+                    if($idx == $pn["idx"])
+                    {
+                        $find = true;
+                    }else
+                    {
+                        if($find == true)
+                        {
+                            $next = $pn["idx"];
+                            $nextTitle = $pn["title"];
+                            break;
+                        }else
+                        {
+                            $prev = $pn["idx"];
+                            $prevTitle = $pn["title"];
+                        }
+                    }
+                    $pn = mysqli_fetch_array($pnresult);
+                }
+            ?>
+
+            <div class="row">
+                <div class="col colLine">
+                    이전글 : <?php echo "<a href='index.php?cmd=board&mode=show&idx=$prev'>$prevTitle</a>" ?>
+                </div>
+                <div class="col colLine text-end">
+                    다음글 : <?php  echo "<a href='index.php?cmd=board&mode=show&idx=$next'>$nextTitle</a>"  ?>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col colLine text-center">
+                    <button type="button" class="btn btn-primary btn-sm" onClick="location.href='index.php?cmd=board'">목록</button> 
+                    <button type="button" class="btn btn-primary btn-sm">수정</button> 
+                    <button type="button" class="btn btn-primary btn-sm">삭제</button> 
+                    <button type="button" class="btn btn-primary btn-sm">답글</button> 
+                </div>
+            </div>
+
+            <?php
+        }else
+        {
+            ?>
+            <script>
+                alert('삭제된 글입니다.');
+                location.href="index.php?cmd=board";
+            </script>
+
+            <?php
+        }
     }
 ?>
