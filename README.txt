@@ -161,3 +161,22 @@ DOM : Document Object Model
         hello <span>aaa</span> <a>link</a>
     </div>
 </body>
+
+
+create table log (
+    idx int(10) auto_increment,
+    work  char(255) default 'no title',
+    id    char(50),
+    ip      char(20) ,
+    time    datetime,
+    primary key(idx)
+);
+
+
+        $test = $_SERVER["QUERY_STRING"];
+
+        echo $_SERVER["REMOTE_ADDR"];
+        
+        echo "test = $test<br>";
+
+        phpinfo();
