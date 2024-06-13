@@ -57,7 +57,7 @@
         ?>
         <div class="row">
             <div class="col-3 colLine">
-                <button type="button" class="btn btn-primary btn-sm" onClick="location.href='index.php?cmd=board&mode=write' ">글쓰기</button>
+                <button type="button" class="btn btn-primary btn-sm" onClick="location.href='index.php?cmd=editor&mode=write' ">글쓰기</button>
             </div>
             <div class="col colLine">[1] [2] [3]</div>
             <div class="col colLine">검색</div>
@@ -109,6 +109,21 @@
         // 3. 글쓰기
         // 4. 완료, 목록
         ?>
+        <script>
+            function setCommand(command)
+            {
+                let editor = document.querySelector('#editor');
+                let html = document.querySelector('#html');
+
+                document.execCommand(command);
+                html.innerHTML = editor.innerHTML;
+            }
+            function setHTML()
+            {
+
+            }
+        </script>
+
 
         <form method="post" action="index.php?cmd=board&mode=doWrite">
         <div class="row">
@@ -123,11 +138,33 @@
                 <input type="text" name="name" class="form-control" required>
             </div>
         </div>
+
         <div class="row">
             <div class="col colLine">
-                <textarea name="html" rows="10" class="form-control" required></textarea>
+                <button type="button" class="btn btn-primary" onClick="setCommand('bold')">
+                    <span class="material-icons">format_bold</span>
+                </button>
+                <button type="button" class="btn btn-primary"  onClick="setCommand('underline')">
+                    <span class="material-icons">format_underline</span>
+                </button>
+                <button type="button" class="btn btn-primary"  onClick="setCommand('italic')">
+                    <span class="material-icons">format_italic</span>
+                </button>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col colLine">
+                <div id="editor" contenteditable="true" style="width:100%; height:300px;" onKeyUp="setHTML()">Editor</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col colLine">
+                <textarea name="html" id="html" rows="10" class="form-control" required></textarea>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col colLine text-center">
                 <button type="submit" class="btn btn-primary btn-sm">완료</button>
@@ -142,9 +179,5 @@
     {
         $idx = $_GET["idx"];
         echo "idx = $idx<br>";
-
-        $sql = "select * from bbs where idx='$idx' ";
-        $result = mysqli_query($conn, $sql);
-        $data = mysqli_fetch_array($result);
     }
 ?>

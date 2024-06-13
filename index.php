@@ -39,7 +39,9 @@
             <li><a class="dropdown-item" href="index.php?cmd=brute">Brute Force</a></li>
 			<li><a class="dropdown-item" href="index.php?cmd=ftp">FTP</a></li>
 			<li><a class="dropdown-item" href="index.php?cmd=rand">Random</a></li>
-			<li><a class="dropdown-item" href="index.php?cmd=board">Board</a></li>         </ul>
+			<li><a class="dropdown-item" href="index.php?cmd=board">Board</a></li>         
+			<li><a class="dropdown-item" href="index.php?cmd=editor">Editor</a></li>
+		</ul>
         </li>
 
 		<li class="nav-item dropdown">

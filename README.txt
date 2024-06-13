@@ -154,4 +154,10 @@ create table bbs (
 insert into bbs (title, name, id, html, time )
     values('첫번째', '홍길동', 'test', '내용 테스트', now() );
 
-    
+DOM : Document Object Model
+
+<body>
+    <div>
+        hello <span>aaa</span> <a>link</a>
+    </div>
+</body>
