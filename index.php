@@ -24,7 +24,12 @@
 	else
 		$userid = "";
 
-	if($_GET["cmd"] != "chart" and $_GET["cmd"] != "chart2")
+	if(isset($_GET["cmd"]))
+		$cmd = $_GET["cmd"];
+	else
+		$cmd = "init";
+
+	if($cmd != "chart" and $cmd != "chart2")
 	{
 		$sql = "insert into log (work, id, ip, time) 
 					values ('$work', '$userid', '$ip', now())";
@@ -162,10 +167,7 @@
 	</form>
 
 	<?php
-		if(isset($_GET["cmd"]))
-			$cmd = $_GET["cmd"];
-		else
-			$cmd = "init";
+
 
 		if(file_exists("$cmd.php"))
 			include "$cmd.php";	

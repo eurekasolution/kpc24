@@ -40,3 +40,9 @@
         <div id="kpc_chart" style="width: 100%; height: 500px"></div>
     </div>
 </div>
+
+<script>
+    setTimeout(function(){
+        location.href='index.php?cmd=chart2';
+    }, 5000);
+</script>
