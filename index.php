@@ -80,6 +80,7 @@
 			<li><a class="dropdown-item" href="index.php?cmd=chart">LogChart</a></li>
 			<li><a class="dropdown-item" href="index.php?cmd=chart2">LogChart</a></li>
             <li><a class="dropdown-item" href="index.php?cmd=crawling">Crawling</a></li>
+			<li><a class="dropdown-item" href="index.php?cmd=fake">Fake</a></li>
           </ul>
         </li>
 
