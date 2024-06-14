@@ -27,8 +27,7 @@
         $splitTitle = explode(">", $title);
         $title = $splitTitle[0];
 
-
-        echo "<pre>" . $title . "</pre><hr>";
+        echo $title . "<hr>";
     }
 ?>
 
