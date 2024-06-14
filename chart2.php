@@ -5,16 +5,26 @@
 
     function drawChart() {
     var data = google.visualization.arrayToDataTable([
-        ['Year', '입사자', '퇴사자', '휴직자'],
-        ['2004',  1000,      400, 300],
-        ['2005',  1170,      460, 130],
-        ['2006',  660,       1120, 980],
-        ['2007',  1030,      540, 800], 
-        ['2008',  730,      440, 500]
+        ['시간', '클릭수'],
+
+        <?php
+            // 2024-06-14 00:00:00 ==> 2024-6-3 3:4:5
+            $today = Date('Y-m-d');
+            for($i=0; $i<24; $i++)
+            {
+                $next = $i + 1;
+                $sql = "select * from log 
+                            where time>='$today $i:00:00' and 
+                                    time< '$today $i:59:59' ";
+                $result = mysqli_query($conn, $sql);
+                $click = mysqli_num_rows($result);
+                echo "[ '$i:00' , $click ],";
+            }
+        ?>
     ]);
 
     var options = {
-        title: '우리회사 직원 현황',
+        title: '접속 현황',
         curveType: 'function',
         legend: { position: 'bottom' }
     };

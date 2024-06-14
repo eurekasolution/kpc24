@@ -70,6 +70,7 @@
           <ul class="dropdown-menu">
 		  	<li><a class="dropdown-item" href="index.php?cmd=log">Log</a></li>
 			<li><a class="dropdown-item" href="index.php?cmd=chart">LogChart</a></li>
+			<li><a class="dropdown-item" href="index.php?cmd=chart2">LogChart</a></li>
             <li><a class="dropdown-item" href="#">A third link</a></li>
           </ul>
         </li>
