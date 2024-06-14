@@ -24,9 +24,12 @@
 	else
 		$userid = "";
 
-	$sql = "insert into log (work, id, ip, time) 
-				values ('$work', '$userid', '$ip', now())";
-	mysqli_query($conn, $sql);
+	if($_GET["cmd"] != "chart" and $_GET["cmd"] != "chart2")
+	{
+		$sql = "insert into log (work, id, ip, time) 
+					values ('$work', '$userid', '$ip', now())";
+		mysqli_query($conn, $sql);
+	}
 ?>
 <!DOCTYPE html>
 <html lang="ko">
