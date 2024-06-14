@@ -150,6 +150,12 @@ create table bbs (
     time    datetime,
     primary key(idx)
 );
+// add, change, drop
+alter table bbs add xxx char(30) after html;
+alter table bbs change xxx file char(20);
+alter table bbs drop file;
+
+
 
 insert into bbs (title, name, id, html, time )
     values('첫번째', '홍길동', 'test', '내용 테스트', now() );

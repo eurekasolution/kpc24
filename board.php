@@ -84,8 +84,21 @@
         $title = addslashes($title);
         $html = addslashes($html);
 
-        $sql = "insert into bbs (title, name, html, time)
-                     values('$title', '$name', '$html', now())";
+        if(isset($_FILES["upfile"]))
+        {
+            // file name : $_FILES["upfile"]["name]
+            // file size : $_FILES["upfile"]["size"]
+            $file = $_FILES["upfile"]["name"];
+            move_uploaded_file($_FILES["upfile"]["tmp_name"], "upload/$file");
+            chmod("upload/$file", 0777);
+        }else
+        {
+            $file = "";
+        }
+
+
+        $sql = "insert into bbs (title, name, html, file, time)
+                     values('$title', '$name', '$html', '$file', now())";
         $result = mysqli_query($conn, $sql);
         if($result)
             $msg = "등록 되었습니다. : ";
@@ -110,7 +123,7 @@
         // 4. 완료, 목록
         ?>
 
-        <form method="post" action="index.php?cmd=board&mode=doWrite">
+        <form method="post" enctype="multipart/form-data" action="index.php?cmd=board&mode=doWrite">
         <div class="row">
             <div class="col-3 col-md-2 colLine">제목</div>
             <div class="col colLine">
@@ -128,6 +141,13 @@
                 <textarea name="html" rows="10" class="form-control" required></textarea>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col colLine">
+                <input type="file" name="upfile" class="form-control">
+            </div>
+        </div>
+
         <div class="row">
             <div class="col colLine text-center">
                 <button type="submit" class="btn btn-primary btn-sm">완료</button>
